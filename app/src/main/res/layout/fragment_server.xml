@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.team2052.frckrawler.views.NonFocusingScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="8dp">
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:text="@string/server" />
+
+                <LinearLayout
+                    android:id="@+id/server_event_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/event_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/host_toggle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:checked="false"
+                            android:padding="16dp" />
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/view_event"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="View Event" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/server_events_error"
+                    style="@style/Base.TextAppearance.AppCompat.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="No Events"
+                    android:textStyle="italic"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/scout_server_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:text="Scout from Server" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/scout_title"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <Button
+                        android:id="@+id/scout_match_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="@string/match_scout" />
+
+                    <Button
+                        android:id="@+id/scout_pit_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="@string/pit_scout" />
+
+                    <Button
+                        android:id="@+id/scout_practice_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="@string/practice_match_scout" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</com.team2052.frckrawler.views.NonFocusingScrollView>
