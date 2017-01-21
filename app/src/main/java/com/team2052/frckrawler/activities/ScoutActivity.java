@@ -27,7 +27,6 @@ public class ScoutActivity extends AppCompatActivity implements HasComponent {
 
     public static final int MATCH_SCOUT_TYPE = 0;
     public static final int PIT_SCOUT_TYPE = 1;
-    public static final int PRACTICE_MATCH_SCOUT_TYPE = 2;
     private static final String SCOUT_TYPE_EXTRA = "com.team2052.frckrawler.SCOUT_TYPE_EXTRA";
     private static final String EVENT_ID_EXTRA = "com.team2052.frckrawler.EVENT_ID_EXTRA";
 
@@ -62,10 +61,6 @@ public class ScoutActivity extends AppCompatActivity implements HasComponent {
                 case PIT_SCOUT_TYPE:
                     titleResId = R.string.pit_scout;
                     fragment = ScoutPitFragment.newInstance(event);
-                    break;
-                case PRACTICE_MATCH_SCOUT_TYPE:
-                    titleResId = R.string.practice_match_scout;
-                    fragment = ScoutMatchFragment.newInstance(event, ScoutMatchFragment.MATCH_PRACTICE_TYPE);
                     break;
                 case MATCH_SCOUT_TYPE:
                 default:

@@ -126,6 +126,7 @@ public class CompiledMetricValue {
                 compiledValue.add("names", possible_values);
                 compiledValue.add("values", values);
                 break;
+
         }
     }
 

@@ -69,7 +69,6 @@ public class ScoutHomeFragment extends Fragment implements View.OnClickListener 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         view.findViewById(R.id.scout_match_button).setOnClickListener(this);
         view.findViewById(R.id.scout_pit_button).setOnClickListener(this);
-        view.findViewById(R.id.scout_practice_button).setOnClickListener(this);
         view.findViewById(R.id.sync_button).setOnClickListener(this);
 
         syncButton = view.findViewById(R.id.sync_button);
@@ -97,9 +96,6 @@ public class ScoutHomeFragment extends Fragment implements View.OnClickListener 
                         break;
                     case R.id.scout_pit_button:
                         startActivity(ScoutActivity.newInstance(getActivity(), mEvent, ScoutActivity.PIT_SCOUT_TYPE));
-                        break;
-                    case R.id.scout_practice_button:
-                        startActivity(ScoutActivity.newInstance(getActivity(), mEvent, ScoutActivity.PRACTICE_MATCH_SCOUT_TYPE));
                         break;
                 }
             } else {

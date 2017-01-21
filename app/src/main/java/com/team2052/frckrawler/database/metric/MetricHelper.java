@@ -255,6 +255,9 @@ public class MetricHelper {
                         data.remove("inc");
                     break;
                 case TEXT:
+                    if (data.has("text"))
+                        data.remove("text");
+                    break;
             }
         }
 

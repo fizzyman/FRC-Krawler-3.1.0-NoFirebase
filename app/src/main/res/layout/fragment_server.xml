@@ -118,12 +118,6 @@
                         android:layout_height="58dp"
                         android:text="@string/pit_scout" />
 
-                    <Button
-                        android:id="@+id/scout_practice_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:text="@string/practice_match_scout" />
-
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
