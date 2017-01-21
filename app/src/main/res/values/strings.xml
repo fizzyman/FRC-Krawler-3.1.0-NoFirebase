@@ -88,6 +88,7 @@
         <item>Slider</item>
         <item>Chooser</item>
         <item>Checkbox</item>
+        <item>Text</item>
     </string-array>
     <!--End Metrics-->
 

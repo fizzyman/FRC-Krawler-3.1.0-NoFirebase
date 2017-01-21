@@ -218,6 +218,8 @@ public class AddMetricActivity extends DatabaseActivity {
                     newWidget = new CheckBoxMetricWidget(this);
                 }
                 break;
+            case MetricHelper.TEXT:
+
             default:
                 mMinimum.setVisibility(View.GONE);
                 mMaximum.setVisibility(View.GONE);

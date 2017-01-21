@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MetricHelper {
     public static final int MATCH_PERF_METRICS = 0, ROBOT_METRICS = 1;
-    public static final int BOOLEAN = 0, COUNTER = 1, SLIDER = 2, CHOOSER = 3, CHECK_BOX = 4;
+    public static final int BOOLEAN = 0, COUNTER = 1, SLIDER = 2, CHOOSER = 3, CHECK_BOX = 4, TEXT = 5;
 
     private static Type listType = new TypeToken<List<Integer>>() {
     }.getType();
@@ -254,6 +254,7 @@ public class MetricHelper {
                     if (data.has("inc"))
                         data.remove("inc");
                     break;
+                case TEXT:
             }
         }
 
