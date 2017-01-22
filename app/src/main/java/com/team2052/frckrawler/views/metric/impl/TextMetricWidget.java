@@ -23,14 +23,14 @@ public class TextMetricWidget extends MetricWidget implements SeekBar.OnSeekBarC
 
     public TextMetricWidget(Context context, MetricValue metricValue) {
         super(context, metricValue);
-        inflater.inflate(R.layout.widget_metric_slider, this);
+        inflater.inflate(R.layout.widget_metric_text, this);
         seekBar = (AppCompatSeekBar) findViewById(R.id.sliderVal);
         setMetricValue(metricValue);
     }
 
     public TextMetricWidget(Context context) {
         super(context);
-        inflater.inflate(R.layout.widget_metric_slider, this);
+        inflater.inflate(R.layout.widget_metric_text, this);
         seekBar = (AppCompatSeekBar) findViewById(R.id.sliderVal);
     }
 
