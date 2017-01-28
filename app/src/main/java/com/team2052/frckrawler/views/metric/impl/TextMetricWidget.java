@@ -2,9 +2,11 @@ package com.team2052.frckrawler.views.metric.impl;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatSeekBar;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.common.base.Optional;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.team2052.frckrawler.R;
@@ -13,77 +15,40 @@ import com.team2052.frckrawler.database.metric.MetricValue;
 import com.team2052.frckrawler.tba.JSON;
 import com.team2052.frckrawler.views.metric.MetricWidget;
 
-public class TextMetricWidget extends MetricWidget implements SeekBar.OnSeekBarChangeListener {
+public class TextMetricWidget extends MetricWidget {
 
-    private final AppCompatSeekBar seekBar;
-    int value;
-    private int min;
-    private int max;
-    private TextView valueText;
+    String value;
+    private EditText valueText;
 
     public TextMetricWidget(Context context, MetricValue metricValue) {
         super(context, metricValue);
         inflater.inflate(R.layout.widget_metric_text, this);
-        seekBar = (AppCompatSeekBar) findViewById(R.id.sliderVal);
-        setMetricValue(metricValue);
     }
 
     public TextMetricWidget(Context context) {
         super(context);
         inflater.inflate(R.layout.widget_metric_text, this);
-        seekBar = (AppCompatSeekBar) findViewById(R.id.sliderVal);
     }
 
     @Override
     public void setMetricValue(MetricValue m) {
-        min = 0;
-        max = 1;
+
         ((TextView) findViewById(R.id.name)).setText(m.getMetric().getName());
 
-        JsonObject range = JSON.getAsJsonObject(m.getMetric().getData());
-        min = range.get("min").getAsInt();
-        max = range.get("max").getAsInt();
+        valueText = (EditText) findViewById(R.id.editText1);
 
-
-        seekBar.setMax(max - min);
-
-        seekBar.setOnSeekBarChangeListener(this);
-
-        ((TextView) findViewById(R.id.min)).setText(Integer.toString(min));
-        ((TextView) findViewById(R.id.max)).setText(Integer.toString(max));
-        valueText = (TextView) findViewById(R.id.value);
-
-        if (m.getValue() != null && !m.getValue().getAsJsonObject().get("value").isJsonNull())
-            value = m.getValue().getAsJsonObject().get("value").getAsInt();
+        final Optional<String> optionalValue = MetricHelper.getTextValue(m);
+        if (optionalValue.isPresent()) {
+            valueText.setText(optionalValue.get());
+          }
         else
-            value = min;
-
-        if (value < min || value > max)
-            value = min;
-        seekBar.setProgress(value - min);
-        valueText.setText(Integer.toString(value));
-    }
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        value = seekBar.getProgress() + min;
-        valueText.setText(Integer.toString(value));
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-        value = seekBar.getProgress() + min;
-        valueText.setText(Integer.toString(value));
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        value = seekBar.getProgress() + min;
-        valueText.setText(Integer.toString(value));
+            valueText.setText("");
     }
 
     @Override
     public JsonElement getData() {
-        return MetricHelper.buildIntMetricValue(value);
+        CharSequence cs = valueText.getText();
+        value = cs.toString();
+        return MetricHelper.buildTextMetricValue(value);
     }
 }

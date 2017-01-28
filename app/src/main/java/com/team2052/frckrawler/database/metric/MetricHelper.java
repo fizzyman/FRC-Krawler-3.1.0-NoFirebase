@@ -109,6 +109,12 @@ public class MetricHelper {
         return data;
     }
 
+    public static JsonObject buildTextMetricValue(String value) {
+        JsonObject data = new JsonObject();
+        data.addProperty("value", value);
+        return data;
+    }
+
     public static JsonObject buildListIndexValue(List<Integer> index_data) {
         JsonObject data = new JsonObject();
         JsonElement values = JSON.getGson().toJsonTree(index_data);
@@ -123,20 +129,41 @@ public class MetricHelper {
         final JsonObject value = optionalValue.get().getAsJsonObject();
         return getBooleanValue(value);
     }
-
-    public static Optional<Boolean> getBooleanValue(JsonObject json) {
+    public static Optional<String> getTextValue(MetricValue metricValue) {
+        final Optional<JsonElement> optionalValue = getMetricValue(metricValue);
+        if (!optionalValue.isPresent())
+            return Optional.absent();
+        final JsonObject value = optionalValue.get().getAsJsonObject();
+        return getTextValue(value);
+    }
+    public static Optional<String> getTextValue(JsonObject json) {
         if (json == null)
             return Optional.absent();
 
         if (json.has("value") && !json.get("value").isJsonNull()) {
             try {
-                return Optional.of(json.get("value").getAsBoolean());
+                return Optional.of(json.get("value").getAsString());
             } catch (ClassCastException e) {
                 return Optional.absent();
             }
         }
         return Optional.absent();
     }
+
+
+    public static Optional<Boolean> getBooleanValue(JsonObject json) {
+        if (json == null)
+            return Optional.absent();
+
+    if (json.has("value") && !json.get("value").isJsonNull()) {
+        try {
+            return Optional.of(json.get("value").getAsBoolean());
+        } catch (ClassCastException e) {
+            return Optional.absent();
+        }
+    }
+    return Optional.absent();
+}
 
     public static Optional<List<String>> getListItemIndexRange(Metric metric) {
         if (metric.getType() != CHECK_BOX && metric.getType() != CHOOSER)

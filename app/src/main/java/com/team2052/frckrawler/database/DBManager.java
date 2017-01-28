@@ -62,7 +62,7 @@ import rx.Observable;
  * @since 10/7/2014
  */
 @Singleton
-public class DBManager {
+public class  DBManager {
     private static DBManager instance;
     private final Games mGames;
     private final Events mEvents;

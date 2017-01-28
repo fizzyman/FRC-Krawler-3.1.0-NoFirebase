@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <color name="nav_drawer_background">#303030</color>
+    <color name="nav_drawer_background">#686868</color>
 
     <!--Material Colors-->
-    <color name="primary_light">#500000</color>
-    <color name="primary">#450000</color>
-    <color name="primary_dark">#330000</color>
+    <color name="primary_light">#4a56ff</color>
+    <color name="primary">#1729ff</color>
+    <color name="primary_dark">#0e1ba4</color>
     <color name="color_accent">#ffd740</color>
 
-    <color name="color_accent_icon_color">#61000000</color>
+    <color name="color_accent_icon_color">#61ffe253</color>
 </resources>

@@ -241,8 +241,11 @@ public class CompilerManager {
                                                 }
 
                                                 JsonObject data = JSON.getAsJsonObject(matchData.getData());
-
-                                                if (metric.getType() < 3) {
+                                                System.out.println(JSON.getGson().toJson(matchData));
+                                                System.out.println(matchData);
+                                                System.out.println(matchData.getData());
+                                                System.out.println("data = " + data);
+                                                if ((metric.getType() < 3) || (metric.getType() == 5)) {
                                                     return data.get("value").toString();
                                                 } else {
                                                     JsonObject metricData = JSON.getAsJsonObject(metric.getData());
