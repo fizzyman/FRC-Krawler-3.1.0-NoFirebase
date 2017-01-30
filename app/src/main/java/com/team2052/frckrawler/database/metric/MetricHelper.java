@@ -62,7 +62,7 @@ public class MetricHelper {
     }
 
     public static Tuple2<Integer, ReturnResult> getIntMetricValue(MetricValue metricValue) {
-        if (metricValue.getMetric().getType() != SLIDER && metricValue.getMetric().getType() != COUNTER)
+        if (metricValue.getMetric().getType() != SLIDER && metricValue.getMetric().getType() != COUNTER && metricValue.getMetric().getType() != TEXT)
             return new Tuple2<>(-1, ReturnResult.WRONG_METRIC_TYPE);
 
         final Optional<JsonElement> optional = getMetricValue(metricValue);
@@ -166,7 +166,7 @@ public class MetricHelper {
 }
 
     public static Optional<List<String>> getListItemIndexRange(Metric metric) {
-        if (metric.getType() != CHECK_BOX && metric.getType() != CHOOSER)
+        if (metric.getType() != CHECK_BOX && metric.getType() != CHOOSER && metric.getType() != TEXT)
             return Optional.absent();
 
         final Optional<JsonElement> optionalData = getMetricData(metric);
@@ -201,7 +201,7 @@ public class MetricHelper {
         }
     }
 
-    @IntDef({BOOLEAN, COUNTER, SLIDER, CHOOSER, CHECK_BOX})
+    @IntDef({BOOLEAN, COUNTER, SLIDER, CHOOSER, CHECK_BOX, TEXT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface MetricType {
     }

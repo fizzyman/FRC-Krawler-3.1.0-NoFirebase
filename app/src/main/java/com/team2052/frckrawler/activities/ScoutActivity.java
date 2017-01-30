@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.team2052.frckrawler.FRCKrawler;
 import com.team2052.frckrawler.R;
@@ -19,6 +20,8 @@ import com.team2052.frckrawler.fragments.scout.ScoutPitFragment;
 import com.team2052.frckrawler.subscribers.SubscriberModule;
 
 import butterknife.ButterKnife;
+
+import static com.team2052.frckrawler.R.layout.activity_scout;
 
 /**
  * Created by adam on 5/2/15.
@@ -40,16 +43,20 @@ public class ScoutActivity extends AppCompatActivity implements HasComponent {
         intent.putExtra(EVENT_ID_EXTRA, event.getId());
         return intent;
     }
-
-
+    ScoutMatchFragment ScoutMatchFrag = new ScoutMatchFragment();
+    int sctCount = ScoutMatchFrag.getCount();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TextView SctText = (TextView) findViewById(R.id.SctView);
+        SctText.setText("You have scouted " + sctCount + "matches");
         super.onCreate(savedInstanceState);
-
+        System.out.println(fragment);
+        if (fragment != null) {
+            System.out.println(fragment.getClass());
+        }
         dbManager = DBManager.getInstance(this);
-
         Event event = dbManager.getEventsTable().load(getIntent().getLongExtra(EVENT_ID_EXTRA, 0));
-        setContentView(R.layout.activity_scout);
+        setContentView(activity_scout);
         ButterKnife.bind(this);
 
         final int scout_type = getIntent().getIntExtra(SCOUT_TYPE_EXTRA, 0);

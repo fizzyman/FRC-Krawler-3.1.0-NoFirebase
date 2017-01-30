@@ -37,9 +37,14 @@ public class ScoutMatchFragment extends BaseScoutFragment {
     public static final int MATCH_PRACTICE_TYPE = 1;
     private static final String TAG = "ScoutMatchFragment";
     private static String MATCH_TYPE = "MATCH_TYPE";
+    public int sctCount = 0;
+    public int getCount(){
+        return sctCount;
+    }
     @BindView(R.id.match_number_input)
     TextInputLayout mMatchNumberInput;
     private int mMatchType;
+
     Observable<List<MetricValue>> metricValueObservable = Observable
             .combineLatest(matchNumberObservable(), robotObservable(), MetricValueUpdateParams::new)
             .map(valueParams -> {
@@ -148,6 +153,7 @@ public class ScoutMatchFragment extends BaseScoutFragment {
                                 matchScoutSaveMetric.matchNum,
                                 new Date(),
                                 JSON.getGson().toJson(metricValue.getValue()));
+                        sctCount = sctCount + 1;
                         if (dbManager.getMatchDataTable().insertMatchData(matchData) && !saved)
                             saved = true;
                     }
