@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.team2052.frckrawler.FRCKrawler;
@@ -43,12 +44,19 @@ public class ScoutActivity extends AppCompatActivity implements HasComponent {
         intent.putExtra(EVENT_ID_EXTRA, event.getId());
         return intent;
     }
-    ScoutMatchFragment ScoutMatchFrag = new ScoutMatchFragment();
-    int sctCount = ScoutMatchFrag.getCount();
+
+
+    ScoutMatchFragment scoutMatchFragment = new ScoutMatchFragment();
+    int sctCount1 = scoutMatchFragment.sctCount;
+
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
-        TextView SctText = (TextView) findViewById(R.id.SctView);
-        SctText.setText("You have scouted " + sctCount + "matches");
+        setContentView(R.layout.activity_scout);
+        TextView textView = (TextView) findViewById(R.id.SctView);
+        textView.setText("You have scouted " + sctCount1 +  "matches");
+
         super.onCreate(savedInstanceState);
         System.out.println(fragment);
         if (fragment != null) {
