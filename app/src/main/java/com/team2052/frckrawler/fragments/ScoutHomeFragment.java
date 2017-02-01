@@ -98,9 +98,6 @@ public class ScoutHomeFragment extends Fragment implements View.OnClickListener 
                     case R.id.scout_pit_button:
                         startActivity(ScoutActivity.newInstance(getActivity(), mEvent, ScoutActivity.PIT_SCOUT_TYPE));
                         break;
-                    case R.id.scout_practice_button:
-                        startActivity(ScoutActivity.newInstance(getActivity(), mEvent, ScoutActivity.PRACTICE_MATCH_SCOUT_TYPE));
-                        break;
                 }
             } else {
                 SnackbarUtil.make(getView(), "Unable to find event", Snackbar.LENGTH_LONG).show();

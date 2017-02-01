@@ -34,7 +34,6 @@ import rx.schedulers.Schedulers;
 
 public class ScoutMatchFragment extends BaseScoutFragment {
     public static final int MATCH_GAME_TYPE = 0;
-    public static final int MATCH_PRACTICE_TYPE = 1;
     private static final String TAG = "ScoutMatchFragment";
     private static String MATCH_TYPE = "MATCH_TYPE";
     @BindView(R.id.match_number_input)
